@@ -1,24 +1,15 @@
 @startuml
-
-@startuml
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Container.puml
-
 Person(RolloutApprover, "RolloutApprover", "Rollout Approver")
-
 Container(RolloutUI, "RolloutUI","RolloutUI")
 Container(RolloutAPI, "RolloutAPI", "RolloutAPI", "RolloutAPI")
 Container(StepEngine, "StepEngine", "StepEngine", "Store new Image")
 Container(DataStore, "Data Store","DataStore", "Data Store")
 Container(ROS, "ROS","ROS", "ROS")
-
 Rel(RolloutApprover, RolloutUI, "Create new Rollout for store", "Http")
-
 Rel(RolloutUI, RolloutAPI, "Create new Rollout", "http")
 Rel(RolloutAPI, DataStore, "Save new Rollout")
 Rel(RolloutAPI, StepEngine, "Create Rollout Steps")
 Rel(StepEngine, DataStore, "Save Steps for Rollout")
-
 Rel(ROS, RolloutAPI, "Get Rollout for Store", "http")
-
-
 @enduml
